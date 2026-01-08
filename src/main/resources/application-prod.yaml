@@ -1,11 +1,18 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: simple library application
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/simple_library
-    username: libUser
-    password: pw789
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+logging:
+  level:
+    root: ${LOG_LEVEL}

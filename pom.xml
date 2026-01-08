@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>org.dr.library</groupId>
 	<artifactId>simple-library</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>simple library application</name>
 	<description>simple library application</description>
 	<url/>
@@ -29,6 +29,8 @@
 	<properties>
 		<java.version>17</java.version>
 		<mapstruct.version>1.6.3</mapstruct.version>
+		<jib.version>3.5.1</jib.version>
+		<image.path>registry.hub.docker.com/dumindaw/${artifactId}:${version}</image.path>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -39,17 +41,24 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.8.5</version>
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -97,6 +106,19 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib.version}</version>
+				<configuration>
+					<from>
+						<image>eclipse-temurin:17-jre</image>
+					</from>
+					<to>
+						<image>${image.path}</image>
+					</to>
 				</configuration>
 			</plugin>
 		</plugins>

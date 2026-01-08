@@ -1,26 +1,29 @@
-# Getting Started
+## Running the application locally
 
-### Reference Documentation
-For further reference, please consider the following sections:
+```bash
+mvn clean package
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/4.0.1/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/4.0.1/maven-plugin/build-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/4.0.1/reference/web/servlet.html)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/4.0.1/reference/data/sql.html#data.sql.jpa-and-spring-data)
+mvn spring-boot:run
+```
+Swagger UI : http://localhost:8082/swagger-ui/index.html
 
-### Guides
-The following guides illustrate how to use some features concretely:
+## Running the application in docker environment
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+```bash
+docker compose up -d
+```
+Swagger UI : http://localhost:8081/swagger-ui/index.html
 
-### Maven Parent overrides
+## API 
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
 
+
+### Add Book
+
+### Add Borrower
+
+### Get list of books
+
+### Borrow a book with a particular book id 
+
+### Return a borrowed book

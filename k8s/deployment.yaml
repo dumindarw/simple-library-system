@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: simple-library
+  labels:
+    app: simple-library
+  name: simple-library
+spec:
+  selector:
+    matchLabels:
+      app: simple-library
+  template:
+    metadata:
+      labels:
+        app: simple-library
+    spec:
+      containers:
+        - image: dumindaw/simple-library:1.0.0
+          name: simple-library
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: simple-library-configs
+                  key: LOG_LEVEL
+            - name: DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: simple-library-configs
+                  key: DATASOURCE_URL
+            - name: DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: simple-library-configs
+                  key: DATASOURCE_USERNAME
+            - name: DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: simple-library-secrets
+                  key: DATASOURCE_PASSWORD
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8081
+            initialDelaySeconds: 60
+            periodSeconds: 30
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8081
+            initialDelaySeconds: 60
+            periodSeconds: 30
