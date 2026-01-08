@@ -1,0 +1,17 @@
+services:
+
+  db:
+    image: postgres:18.1
+    restart: always
+    environment:
+      POSTGRES_USER: libUser
+      POSTGRES_PASSWORD: pw789
+      POSTGRES_DB: simple_library
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
