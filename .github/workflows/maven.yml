@@ -33,12 +33,4 @@ jobs:
         token: ${{ secrets.TC_CLOUD_TOKEN }}     
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Build and push image
-      run: mvn jib:build --file pom.xml
+
