@@ -54,6 +54,10 @@ kubectl apply -f k8s/secrets.yaml
 kubectl apply -f k8s/deployment.yaml
 ```
 
+## CI with GitHub actions
+
+https://github.com/dumindarw/simple-library-system/actions
+
 ## API Overview
 
 Base path: `/`
