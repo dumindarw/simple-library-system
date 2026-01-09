@@ -30,7 +30,7 @@
 		<java.version>17</java.version>
 		<mapstruct.version>1.6.3</mapstruct.version>
 		<jib.version>3.5.1</jib.version>
-		<image.path>registry.hub.docker.com/dumindaw/${artifactId}:${version}</image.path>
+		<image.path>registry.hub.docker.com/dumindaw/${artifactId}:${project.version}</image.path>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -71,8 +71,35 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-testcontainers</artifactId>
+		<scope>test</scope>
+	</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>1.21.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>6.0.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
